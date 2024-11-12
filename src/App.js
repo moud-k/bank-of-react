@@ -18,14 +18,26 @@ class App extends Component {
   constructor() {  // Create and initialize state
     super(); 
     this.state = {
-      accountBalance: 1234567.89,
+      accountBalance: 0,
       creditList: [],
       debitList: [],
+      totalCredits: 0,
+      totalDebits: 0,
       currentUser: {
         userName: 'Joe Smith',
         memberSince: '11/22/99',
       }
     };
+  }
+  
+  componentDidMount()
+  {
+    this.setState
+    (
+        {
+            accountBalance: this.state.totalCredits - this.state.totalDebits
+        }
+    );
   }
 
   // Update state's currentUser (userName) after "Log In" button is clicked
