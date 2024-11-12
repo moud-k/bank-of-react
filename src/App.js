@@ -30,34 +30,36 @@ class App extends Component {
     };
   }
   
-    componentDidMount()
-    {
-    var creditSum = 0;
-    var debitSum = 0;
-    fetch('https://johnnylaicode.github.io/api/credits.json')
-        .then(response => response.json())
-        .then
-        (credits =>
-            {
-                creditSum = credits.reduce((total, individualCredit) => total + individualCredit.amount, 0);
-                fetch('https://johnnylaicode.github.io/api/debits.json')
-                .then(response => response.json())
-                .then
-                (debits =>
-                    {
-                        debitSum = debits.reduce((total, individualDebit) => total + individualDebit.amount, 0);
-                        this.setState
-                        ({
-                            totalCredits: creditSum,
-                            totalDebits: debitSum,
-                            accountBalance: creditSum - debitSum
-                            
-                        })
-                    }
-                )
-            },
-        )
-    }
+  componentDidMount()
+  {
+  var creditSum = 0;
+  var debitSum = 0;
+  fetch('https://johnnylaicode.github.io/api/credits.json')
+      .then(response => response.json())
+      .then
+      (credits =>
+          {
+              creditSum = credits.reduce((total, individualCredit) => total + individualCredit.amount, 0);
+              fetch('https://johnnylaicode.github.io/api/debits.json')
+              .then(response => response.json())
+              .then
+              (debits =>
+                  {
+                      debitSum = debits.reduce((total, individualDebit) => total + individualDebit.amount, 0);
+                      this.setState
+                      ({
+                          creditList: credits,
+                          debitList: debits,
+                          totalCredits: creditSum,
+                          totalDebits: debitSum,
+                          accountBalance: creditSum - debitSum
+                          
+                      })
+                  }
+              )
+          },
+      )
+  }
 
 
 
