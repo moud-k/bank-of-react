@@ -24,7 +24,7 @@ const Credits = (props) => {
     
           <form onSubmit={props.addCredit}>
             <input type="text" name="description" />
-            <input type="number" name="amount" />
+            <input type="number" name="amount" step="0.01"/>
             <button type="submit">Add Credit</button>
           </form>
           <br/>
